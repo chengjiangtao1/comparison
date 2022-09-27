@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html对比</title>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="./diffHtmlString.js"></script>
+	<script src="../apps/com.awspaas.user.apps.moka/js/diffHtmlString.js?v=1660705722000"></script>
+</head>
+<body>
+
+<div>
+<tr>
+  <td>
+    <div id="output" class="current-document" border="0"></div>
+  </td>
+  <td>
+    <div id="outputNew" class="system-generated" border="0"></div>
+  </td>
+</tr>
+</div>
+
+<script>
+
+var mock_old = "<div style='font-size: 38px;'>我这里是一个关于对比的测试文本，数据格式HTML，<span>新增</span><span>修改</span><span>删除</span></div>";
+var mock_new = "<div style='font-size: 18px;'>我这里是一个关于对比的测试文本，数据格式HTML，<span></span><span>修改2</span></div>"
+$(function () {
+  /** 对比 */
+  var output = DiffHtmlString(mock_old, mock_new);
+  var input = DiffHtmlString(mock_new, mock_old);
+  document.getElementById('output').innerHTML = output;
+  document.getElementById('outputNew').innerHTML = input;
+})
+</script>
+
+</body>
+</html>
